@@ -1,0 +1,21 @@
+<!--카페 정보 ㄴㄴ -->
+<!-- 카페에 등록된 글이 보여야한다. -->
+<h1><%= @cafe.title %></h1>
+<p><%= @cafe.description %></p>
+
+
+<!-- 카페 가입버튼 -->
+<%= link_to "카페 가입하기", join_cafe_path(@cafe), method: "POST", class: "btn btn-warning text-white"%>
+<hr>
+<ul class="list-group">
+  <% @cafe.posts.each do |post| %>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= link_to "#{post.title}", post_path(post) %> <!--path쓰는 방법은 prefix이름_path(가변수) -->
+
+    <span class="badge badge-primary badge-pill"><%= post.comments.count %></span>
+  </li>
+  <% end %>
+</ul>
+<hr>
+<!-- 새글 등록버튼 -->
+<%= link_to "새글 등록", new_post_path(cafe_id: @cafe_id), class: "btn btn-info" %>

@@ -1,4 +1,5 @@
 <%= form_for(post, html: {class: 'text-center'}) do |f| %>
+<%= f.hidden_field :cafe_id, value: params[:daum_id] %>
 
   <div class="field">
     <%= f.label :title %>
