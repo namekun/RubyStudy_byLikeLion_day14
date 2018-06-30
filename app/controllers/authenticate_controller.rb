@@ -26,6 +26,7 @@ class AuthenticateController < ApplicationController
             session[:sign_in_user] = @user.id
             redirect_to root_path, flash: {success: '로그인 성공'}
         else
+            p @users.errors
             redirect_to :back, flash: {danger: '로그인 정보가 잘못 되었습니다.'}
         end
     end

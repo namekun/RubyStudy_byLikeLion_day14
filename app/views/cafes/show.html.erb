@@ -3,10 +3,13 @@
 <h1><%= @cafe.title %></h1>
 <p><%= @cafe.description %></p>
 
-
+<%unless @cafe.is_member?(current_user) %>
 <!-- 카페 가입버튼 -->
 <%= link_to "카페 가입하기", join_cafe_path(@cafe), method: "POST", class: "btn btn-warning text-white"%>
+<%end%>
+
 <hr>
+
 <ul class="list-group">
   <% @cafe.posts.each do |post| %>
   <li class="list-group-item d-flex justify-content-between align-items-center">

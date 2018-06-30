@@ -5,6 +5,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+#uploader
+gem 'carrierwave'
+gem 'mini_magick'
+gem "fog-aws" # aws
+
+# credential
+gem 'figaro'
+
 gem 'toastr_rails'
 # Faker
 gem 'faker'

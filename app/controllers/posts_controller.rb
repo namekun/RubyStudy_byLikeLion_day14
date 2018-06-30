@@ -26,11 +26,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.daum_id = session[:current_user]
+    @post.daum_id = session[:current_cafe]
       if @post.save
+        session.delete(:current_cafe)
         #flash[:notice] = 'Post was successfully created.' 
         redirect_to @post, flash: { success: 'Post was successfully created.' } # 어디로 가는지를 지정, flash의 키를 지정, 그리고 value = notice
       else
+        p @post
         render :new 
       end
   end
@@ -60,7 +62,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :contents, :daum_id) # 설정해 놓은 파라미터만 받을 수 있습니다. 
-      #{title: params[:post][:title], contents: [:post][:title][:daum_id]}
+      params.require(:post).permit(:title, :contents, :image_path, {avatars: []}) # 설정해 놓은 파라미터만 받을 수 있습니다. 
+      #{title: params[:post][:title], contents: [:post][:title][:daum_id][:image_path]}
     end
 end
