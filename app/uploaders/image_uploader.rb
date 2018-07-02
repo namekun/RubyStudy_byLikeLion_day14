@@ -30,11 +30,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb_fit do
-    process resize_to_fit: [250, 250]
+    process resize_to_fit: [250, 250] # 해당 사이즈에 맞게 잘라준다.
   end
   
   version :thumb_fill do
-    process resize_to_fill: [250, 250]
+    process resize_to_fill: [250, 250] # 해당 사이즈에 맞게 이미지를 맞춘다.
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
